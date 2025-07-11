@@ -11,7 +11,9 @@ A personal portfolio website built with Django to showcase my projects and skill
 - Project Management: Dedicated Django app to manage portfolio projects.
 
 ## 🚀 Getting Started
-
+CAN BE OPEN THRU WEB: https://quiz1-2.onrender.com
+User: ADMIN
+PASS: 09092233ADMIN
 Follow these steps to get a copy of the project up and running on your local machine.
 
 ### Prerequisites
