@@ -1,10 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'projects/base.html' %}
+{% load static %} {# Need to load static here too for image #}
 
-</body>
-</html>
+{% block title %}Home - My Portfolio{% endblock %}
+
+{% block sidebar %}
+    {# Profile Picture #}
+    <img src="{% static 'images/your_profile_picture.jpg' %}" alt="Celvin Johnsen Guevarra" class="img-fluid rounded-circle mb-3" style="width: 150px; height: 150px; object-fit: cover;">
+    {# Make sure to replace 'your_profile_picture.jpg' with your actual image path #}
+    {# Create an 'images' folder inside MyPortfolio1/static/ and place your image there #}
+
+    <h2 class="h4 text-dark mb-1">Celvin Johnsen Guevarra</h2>
+    <p class="text-secondary mb-4">Student</p>
+
+    {# Email Button #}
+    <a href="mailto:cmguevarra@student.hau.edu.ph" class="btn btn-dark btn-lg mb-4" style="background-color: black; border-color: black;">
+        Email me: cmguevarra@student.hau.edu.ph
+    </a>
+
+    {# Social Icons #}
+    <div class="d-flex justify-content-center">
+        <a href="#" class="text-dark mx-2 h3"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="text-dark mx-2 h3"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="text-dark mx-2 h3"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="text-dark mx-2 h3"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+    {# You'll need Font Awesome for these icons. See base.html. #}
+{% endblock %}
+
+{% block content %}
+    <h1 class="mb-4">Welcome to My Personal Portfolio!</h1>
+    <p class="lead">
+        This is where I showcase my skills and projects. Explore my work and learn more about me.
+    </p>
+
+    <h2 class="mt-5 mb-3">My Projects</h2>
+    <div class="row">
+        {% if projects %} {# Checks if there are any projects passed from the view #}
+            {% for project in projects %} {# Loops through each project object #}
+                <div class="col-md-6 mb-4">
+                    <div class="card bg-dark text-white border"> {# Added bg-dark and border to cards #}
+                        <div class="card-body">
+                            <h5 class="card-title">{{ project.name }}</h5>
+                            <p class="card-text">{{ project.description|truncatechars:150 }}</p> {# Truncates description to 150 characters #}
+                            <p class="card-text"><small class="text-muted">Created: {{ project.created_at|date:"F d, Y" }}</small></p>
+                            </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %} {# If no projects are found in the database, show only the "No projects to display yet" message #}
+            <div class="col-12">
+                <p>No projects to display yet. Check back soon!</p>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

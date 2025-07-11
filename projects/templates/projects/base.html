@@ -1,10 +1,37 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Portfolio{% endblock %}</title>
+    <link rel="icon" href="{% static 'favicon.ico' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
+    <div class="container-fluid"> {# Use container-fluid for full width, or container for fixed width #}
+        <div class="row min-vh-100"> {# min-vh-100 makes the row take at least 100% of the viewport height #}
+            {# Sidebar Column #}
+            <div class="col-md-4 col-lg-3 bg-white border-end d-flex flex-column justify-content-center align-items-center p-4">
+                {% block sidebar %}
+                    {# This block will be filled by child templates for sidebar content #}
+                {% endblock %}
+            </div>
 
+            {# Main Content Column #}
+            <div class="col-md-8 col-lg-9 bg-dark text-white p-4 d-flex flex-column">
+                <div class="d-flex justify-content-end mb-4">
+                    <a class="nav-link text-white me-3" href="{% url 'projects:home' %}">HOME</a>
+                    <a class="nav-link text-white" href="{% url 'projects:about' %}">ABOUT</a>
+                </div>
+                {% block content %}
+                    {# This block will be filled by child templates for main content #}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 </body>
 </html>

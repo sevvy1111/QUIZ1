@@ -1,10 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'projects/base.html' %}
+{% load static %} {# Need to load static here for the profile image #}
 
-</body>
-</html>
+{% block title %}About Me - My Portfolio{% endblock %}
+
+{% block sidebar %}
+    {# Profile Picture #}
+    <img src="{% static 'images/your_profile_picture.jpg' %}" alt="Celvin Johnsen Guevarra" class="img-fluid rounded-circle mb-3" style="width: 150px; height: 150px; object-fit: cover;">
+    {# Make sure this path is correct for your profile picture #}
+
+    <h2 class="h4 text-dark mb-1">Celvin Johnsen Guevarra</h2>
+    <p class="text-secondary mb-4">Student</p>
+
+    {# Email Button #}
+    <a href="mailto:cmguevarra@student.hau.edu.ph" class="btn btn-dark btn-lg mb-4" style="background-color: black; border-color: black;">
+        Email me: cmguevarra@student.hau.edu.ph
+    </a>
+
+    {# Social Icons #}
+    <div class="d-flex justify-content-center">
+        <a href="#" class="text-dark mx-2 h3"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="text-dark mx-2 h3"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="text-dark mx-2 h3"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="text-dark mx-2 h3"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+    {# Ensure Font Awesome is linked in base.html #}
+{% endblock %}
+
+{% block content %}
+    <h1 class="mb-4">About Me</h1>
+    <p class="lead">
+        Hello! I'm Celvin Johnsen Guevarra, an aspiring developer passionate about creating solutions through technology. I'm constantly learning and building new things.
+    </p>
+
+    <div class="card mt-4 bg-dark text-white border">
+        <div class="card-body">
+            <h5 class="card-title">My Journey</h5>
+            <p class="card-text">
+                As a Computer Engineering student at Holy Angel University, I'm fascinated by how hardware and software integrate to solve real-world problems. My coursework has equipped me with foundational skills in digital logic and programming, and I'm particularly interested in embedded systems and robotics. This portfolio reflects my passion for learning by doing, showcasing my practical projects as I build towards a career in tech.
+            </p>
+            <h5 class="card-title mt-3">Skills</h5>
+            <ul>
+                <li>C++, Python, Django</li>
+                <li>Bootstrap</li>
+                <li>Git, GitHub</li>
+            </ul>
+            <h5 class="card-title mt-3">Interests</h5>
+            <p class="card-text">
+                Outside of coding, I enjoy playing guitar, and videogames.
+            </p>
+        </div>
+    </div>
+{% endblock %}
