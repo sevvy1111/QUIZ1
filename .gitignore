@@ -3,6 +3,5 @@ __pycache__/
 .env/
 venv/
 env/
-db.sqlite3
-.DS_Store
 # db.sqlite3
+.DS_Store
